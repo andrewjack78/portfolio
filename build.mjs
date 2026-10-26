@@ -1,0 +1,11 @@
+import {build} from 'esbuild';
+import {mkdir,copyFile,writeFile} from 'node:fs/promises';
+import {existsSync} from 'node:fs';
+const entry=existsSync('src/main.jsx')?'src/main.jsx':'main.jsx';
+const assets=existsSync('public/index.html')?'public':'.';
+await mkdir('dist',{recursive:true});
+await build({entryPoints:[entry],bundle:true,minify:true,outfile:'dist/app.js',format:'iife',target:['es2022'],define:{'process.env.NODE_ENV':'"production"'},legalComments:'none'});
+await Promise.all(['style.css','portrait.jpg'].map(f=>copyFile(`${assets}/${f}`,`dist/${f}`)));
+await copyFile(`${assets}/index.html`,'dist/index.html');
+await writeFile('dist/.nojekyll','');
+console.log('React bundle ready. Public output: HTML, CSS, JS and portrait only.');

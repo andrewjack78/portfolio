@@ -1,0 +1,1 @@
+{"name":"andrew-portfolio","version":"2.0.0","private":true,"type":"module","description":"Portfólio React de Andrew de Pontes, preparado e servido com Node.js.","scripts":{"build":"node build.mjs","start":"node server.mjs"},"dependencies":{"react":"19.2.8","react-dom":"19.2.8"},"devDependencies":{"esbuild":"0.25.12"}}
