@@ -12,7 +12,7 @@ O projeto aceita os fontes na raiz do repositório (main.jsx, index.html, style.
 
 - Acompanhamento orçamentário: projeto realizado durante atuação de Andrew como estagiário na Petrobras. Prévia web com dados totalmente fictícios, baseada nos temas do relatório Power BI: gastos gerais, treinamentos e viagens.
 - Valoração de soluções digitais: mesmo contexto profissional de estágio. Prévia de custo, economia, pontos e priorização com soluções e valores sintéticos. Não reproduz todas as regras financeiras do original.
-- Integrasa, desempenho comercial: reprodução web dos temas da apresentação Power BI, com visão geral e equipes. Dados sintéticos próprios.
+- Integrasa, desempenho comercial: painel desenvolvido durante candidatura a uma vaga para demonstrar conhecimentos de Power BI e análise de dados. Reprodução web dos temas do relatório, com visão geral e equipes e dados sintéticos próprios.
 - Integral Clínica: navegação adaptada a partir dos módulos e identidade do sistema profissional. Pacientes e números fictícios. Não é o código completo da aplicação desktop e não executa funções profissionais.
 - Integrasa, portal do cliente: incorporação do protótipo público independente.
 
