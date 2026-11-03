@@ -1,14 +1,15 @@
 import {build} from 'esbuild';
-import {mkdir,copyFile,writeFile,readFile} from 'node:fs/promises';
+import {mkdir,copyFile,writeFile,readFile,cp} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {existsSync} from 'node:fs';
 const entry=existsSync('src/main.jsx')?'src/main.jsx':'main.jsx';
 const assets=existsSync('public/index.html')?'public':'.';
 await mkdir('dist',{recursive:true});
 await build({entryPoints:[entry],bundle:true,minify:true,outfile:'dist/app.js',format:'iife',target:['es2022'],define:{'process.env.NODE_ENV':'"production"'},legalComments:'none'});
-await Promise.all(['style.css','portrait.jpg'].map(f=>copyFile(`${assets}/${f}`,`dist/${f}`)));
+await Promise.all(['style.css','portrait.jpg','projects.html','projects.js'].map(f=>copyFile(`${assets}/${f}`,`dist/${f}`)));
+await cp('project-media','dist/project-media',{recursive:true});
 const version=createHash('sha256').update(await readFile('dist/app.js')).update(await readFile('dist/style.css')).digest('hex').slice(0,12);
 const html=(await readFile(`${assets}/index.html`,'utf8')).replace(/app\.js(?:\?v=[a-f0-9]+)?/g,`app.js?v=${version}`).replace(/style\.css(?:\?v=[a-f0-9]+)?/g,`style.css?v=${version}`);
 await writeFile('dist/index.html',html);
 await writeFile('dist/.nojekyll','');
-console.log('React bundle ready. Public output: HTML, CSS, JS and portrait only.');
+console.log('React bundle ready. Public output: HTML, CSS, JavaScript and project media.');
