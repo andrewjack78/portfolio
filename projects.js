@@ -2,7 +2,7 @@ const cards = [
 ['orcamento','Petrobras','Acompanhamento orçamentário','Budget monitoring','Power BI para comparar gastos planejados, realizados e projetados, com recortes por gerência, período e categoria, incluindo viagens e treinamentos.','Power BI report comparing planned, actual and forecast spending by department, period and category, including travel and training.'],
 ['integral','React · Node.js · JavaScript · Electron','Integral Clínica','Integral Clínica','Aplicação desktop para cadastro de pacientes, prontuário, agenda com gestão dos atendimentos, estoque e controle de receitas, despesas e pendências.','Desktop application for patient registration, medical records, appointment management, inventory, and tracking income, expenses and outstanding payments.'],
 ['comercial','Power BI · Integrasa','Desempenho comercial','Sales performance','Estudo para uma candidatura, com dados fictícios. Analisa adesões versus metas, ticket mensal e conversão e custo de aquisição por canal pago.','Recruitment case study using synthetic data. Tracks new contracts against targets, average monthly contract value, conversion and acquisition cost by paid channel.','integrasa.png'],
-['aurora','Power BI · Educa Dados','Aurora | Bootcamp','Aurora | Bootcamp','Projeto educacional com visão executiva de vendas e metas e análise por filial, cidade, vendedor, profissional e serviço.','Educational case study featuring an executive sales and targets dashboard and breakdowns by branch, city, salesperson, practitioner and service.','aurora.png']
+['aurora','Power BI · DAX · EducaDados','Projeto Aurora | Desafio EducaDados','Project Aurora | EducaDados Bootcamp','Desafio de Power BI para acompanhar vendas e metas de uma rede odontológica. Modelei os dados e criei medidas em DAX para comparar o valor e a quantidade de vendas com as metas. A Visão Executiva reúne indicadores, evolução mensal e rankings. A Análise Detalhada permite investigar desvios por filial, cidade, vendedor, profissional, grupo de serviço e serviço.','Power BI bootcamp project for tracking sales and targets across a dental care network. I modeled the data and built DAX measures to compare sales revenue and volume against targets. The Executive Overview brings together KPIs, monthly trends and rankings. The Detailed Analysis page lets users investigate gaps by branch, city, salesperson, practitioner, service group and service.']
 ];
 const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'pt';
 const en = lang === 'en';
@@ -20,6 +20,10 @@ const galleries = {
     ['integral-inicio.png', 'Visão geral', 'Overview'],
     ['integral-agenda.png', 'Agenda', 'Appointments'],
     ['integral-financeiro.png', 'Financeiro', 'Finance']
+  ],
+  aurora: [
+    ['aurora.png', 'Visão Executiva', 'Executive Overview'],
+    ['aurora-analise-detalhada.png', 'Análise Detalhada', 'Detailed Analysis']
   ]
 };
 for (const [id, tag, ptTitle, enTitle, ptDesc, enDesc, image] of cards) {
@@ -31,6 +35,11 @@ for (const [id, tag, ptTitle, enTitle, ptDesc, enDesc, image] of cards) {
   if (id === 'integral') {
     const note = document.createElement('p');
     note.textContent = en ? 'Illustrative screens with fictional data.' : 'Telas ilustrativas com dados fictícios.';
+    article.append(note);
+  }
+  if (id === 'aurora') {
+    const note = document.createElement('p');
+    note.textContent = en ? 'Screenshots from the bootcamp report. Salesperson names are hidden.' : 'Capturas do relatório do bootcamp. Os nomes dos vendedores foram ocultados.';
     article.append(note);
   }
   const gallery = document.createElement('div');
